@@ -33,3 +33,16 @@
   animation: exit 0.4s ease;
   animation-fill-mode: forwards;
 }
+
+select::-webkit-scrollbar {
+  width: 4px;
+}
+
+select::-webkit-scrollbar-track {
+  background: #090a0d;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+}

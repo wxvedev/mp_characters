@@ -92,11 +92,13 @@ function Selection({ characters }: { characters: ICharacter[] }) {
                   <Button
                     className="bg-blue-500 hover:bg-blue-600"
                     text="Select"
+                    disabled={false}
                     onClick={() => setSelectedCharacter(character)}
                   />
                   <Button
                     className="bg-red-500 hover:bg-red-600"
                     text="Delete"
+                    disabled={false}
                     onClick={() => setCharacterToDelete(character)}
                   />
                 </footer>
