@@ -29,31 +29,31 @@ function App() {
     {
       action: "setCharacters",
       data: [
-        // {
-        //   cid: "1",
-        //   firstName: "John",
-        //   lastName: "Doe",
-        //   gender: "Male",
-        //   phoneNumber: "123456789",
-        //   cash: 1000,
-        //   bank: 15000,
-        //   job: {
-        //     name: "police",
-        //     rank: "officer",
-        //   },
-        // },
-        // {
-        //   cid: "2",
-        //   firstName: "Doe",
-        //   lastName: "John",
-        //   gender: "Male",
-        //   phoneNumber: "123456789",
-        //   cash: 1000,
-        //   bank: 15000,
-        //   job: {
-        //     name: "unemployed",
-        //   },
-        // },
+        {
+          cid: "1",
+          firstName: "John",
+          lastName: "Doe",
+          gender: "Male",
+          phoneNumber: "123456789",
+          cash: 1000,
+          bank: 15000,
+          job: {
+            name: "police",
+            rank: "officer",
+          },
+        },
+        {
+          cid: "2",
+          firstName: "Doe",
+          lastName: "John",
+          gender: "Male",
+          phoneNumber: "123456789",
+          cash: 1000,
+          bank: 15000,
+          job: {
+            name: "unemployed",
+          },
+        },
       ],
     },
   ]);
