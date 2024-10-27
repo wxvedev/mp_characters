@@ -21,7 +21,7 @@ function Input({
       </label>
       {type === "select" ? (
         <select
-          className="border-b border-white/50 outline-none focus:border-white text-white transition-colors pb-2 appearance-none bg-transparent pl-2 pt-2 cursor-pointer"
+          className="border-b border-white/50 outline-none focus:border-white text-white transition-colors pb-2 appearance-none bg-transparent cursor-pointer"
           value={value}
           onChange={onChange}
         >

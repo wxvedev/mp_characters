@@ -46,17 +46,17 @@ function Selection({ characters }: { characters: ICharacter[] }) {
         {characters.map((character) => {
           const {
             cid,
-            firstName,
-            lastName,
-            phoneNumber,
             cash,
             bank,
-            gender,
-            job,
+            firstname,
+            lastname,
+            sex,
+            dob,
+            phone,
           } = character;
-          const { name, rank } = job;
+          // const { name, rank } = job;
 
-          const fullname = `${firstName} ${lastName}`;
+          const fullname = `${firstname} ${lastname}`;
 
           return (
             <li key={cid} className="w-full flex justify-center items-center">
@@ -66,7 +66,7 @@ function Selection({ characters }: { characters: ICharacter[] }) {
               >
                 <header>
                   <h3 className="text-3xl font-semibold text-mp">{fullname}</h3>
-                  <h4 className="capitalize text-lg font-medium text-white/60">
+                  {/* <h4 className="capitalize text-lg font-medium text-white/60">
                     {!rank ? (
                       name
                     ) : (
@@ -74,13 +74,13 @@ function Selection({ characters }: { characters: ICharacter[] }) {
                         {name} ({rank})
                       </span>
                     )}
-                  </h4>
+                  </h4> */}
                 </header>
 
                 <main className="flex flex-col gap-4 text-white/60">
                   <Grid>
-                    <Info title="Gender" description={gender} />
-                    <Info title="Phone Number" description={phoneNumber} />
+                    <Info title="Gender" description={sex} />
+                    <Info title="Phone Number" description={phone} />
                   </Grid>
                   <Grid>
                     <Info title="Cash" description={formatMoney(cash)} />

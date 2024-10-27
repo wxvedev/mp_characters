@@ -17,7 +17,7 @@ function CharacterDeletionModal({
         <h2 className="text-md font-regular text-white/60">
           Are you sure you want to delete{" "}
           <span className="font-medium">
-            {character.firstName} {character.lastName}
+            {character.firstname} {character.lastname}
           </span>
           ?
         </h2>
@@ -28,11 +28,13 @@ function CharacterDeletionModal({
           <Button
             className="px-4 py-2 text-gray-200 bg-gray-700 rounded hover:bg-gray-600"
             text="Cancel"
+            disabled={false}
             onClick={onClose}
           />
           <Button
             className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600"
             text="Delete"
+            disabled={false}
             onClick={() => {
               onConfirm();
               onClose();

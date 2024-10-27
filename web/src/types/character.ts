@@ -1,15 +1,14 @@
 type ICharacter = {
   cid: string;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  phoneNumber: string;
   cash: number;
   bank: number;
-  job: {
-    name: string;
-    rank?: string;
-  };
+  firstname: string;
+  lastname: string;
+  sex: "male" | "female";
+  dob: string;
+  phone: string;
+  bankingId: string;
+  citizenid: string;
 };
 
 export default ICharacter;
