@@ -14,8 +14,8 @@ on("__cfx_nui:selectCharacter", (data: { cid: number }, cb: Function) => {
 RegisterNuiCallbackType("deleteCharacter");
 on("__cfx_nui:deleteCharacter", (charData) => {
   try {
-    console.log("Emitting deleteChar event with data:", charData); // Debug
-    emitNet("MP-Base:deleteChar", JSON.stringify(charData)); // Ensure charData is structured correctly
+    console.log("Emitting deleteChar event with data:", charData);
+    emitNet("MP-Base:deleteChar", charData);
   } catch (err) {
     console.error("Error in deleteCharacter:", err);
   }

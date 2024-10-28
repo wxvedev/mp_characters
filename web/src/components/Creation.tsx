@@ -53,15 +53,15 @@ function Input({
 
 function Creation() {
   const [data, setData] = useState<any>({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     sex: "",
     country: "",
   });
 
-  const { firstName, lastName, sex, country } = data;
+  const { firstname, lastname, sex, country } = data;
 
-  const disabled = !firstName || !lastName || !sex || !country;
+  const disabled = !firstname || !lastname || !sex || !country;
 
   const countries = [
     { value: "AF", label: "Afghanistan" },
@@ -323,14 +323,14 @@ function Creation() {
           <Input
             type="text"
             label="First Name"
-            value={data.firstName}
-            onChange={(e) => setData({ ...data, firstName: e.target.value })}
+            value={data.firstname}
+            onChange={(e) => setData({ ...data, firstname: e.target.value })}
           />
           <Input
             type="text"
             label="Last Name"
-            value={data.lastName}
-            onChange={(e) => setData({ ...data, lastName: e.target.value })}
+            value={data.lastname}
+            onChange={(e) => setData({ ...data, lastname: e.target.value })}
           />
         </div>
         <div className="grid grid-cols-2 gap-4">

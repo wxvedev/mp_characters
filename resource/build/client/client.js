@@ -1,10 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/client/callbacks.ts":
-/*!*********************************!*\
-  !*** ./src/client/callbacks.ts ***!
-  \*********************************/
+/***/ 687:
 /***/ (() => {
 
 RegisterNuiCallbackType("createCharacter");
@@ -21,8 +18,8 @@ on("__cfx_nui:selectCharacter", (data, cb) => {
 RegisterNuiCallbackType("deleteCharacter");
 on("__cfx_nui:deleteCharacter", (charData) => {
     try {
-        console.log("Emitting deleteChar event with data:", charData); // Debug
-        emitNet("MP-Base:deleteChar", JSON.stringify(charData)); // Ensure charData is structured correctly
+        console.log("Emitting deleteChar event with data:", charData);
+        emitNet("MP-Base:deleteChar", charData);
     }
     catch (err) {
         console.error("Error in deleteCharacter:", err);
@@ -32,16 +29,13 @@ on("__cfx_nui:deleteCharacter", (charData) => {
 
 /***/ }),
 
-/***/ "./src/client/events.ts":
-/*!******************************!*\
-  !*** ./src/client/events.ts ***!
-  \******************************/
+/***/ 130:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const nui_1 = __webpack_require__(/*! ./nui */ "./src/client/nui.ts");
+const nui_1 = __webpack_require__(995);
 onNet("mp_characters:setVisible", (visible) => {
     (0, nui_1.send)({ action: "setVisible", data: visible });
     (0, nui_1.focus)(visible ? true : false);
@@ -54,10 +48,7 @@ onNet("mp_characters:setCharacters", (data) => {
 
 /***/ }),
 
-/***/ "./src/client/nui.ts":
-/*!***************************!*\
-  !*** ./src/client/nui.ts ***!
-  \***************************/
+/***/ 995:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -112,14 +103,12 @@ var __webpack_exports__ = {};
 (() => {
 "use strict";
 var exports = __webpack_exports__;
-/*!******************************!*\
-  !*** ./src/client/client.ts ***!
-  \******************************/
+var __webpack_unused_export__;
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__webpack_require__(/*! ./events */ "./src/client/events.ts");
-__webpack_require__(/*! ./callbacks */ "./src/client/callbacks.ts");
-__webpack_require__(/*! ./nui.ts */ "./src/client/nui.ts");
+__webpack_unused_export__ = ({ value: true });
+__webpack_require__(130);
+__webpack_require__(687);
+__webpack_require__(995);
 
 })();
 

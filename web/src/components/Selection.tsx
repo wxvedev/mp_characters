@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import { formatMoney } from "../utils/formatter";
+import { fetchNui } from "../hooks/fetchNui";
 
 import Button from "./Button";
 import CharacterDeletionModal from "./Modal";
 
 import ICharacter from "../types/character";
-import { fetchNui } from "../hooks/fetchNui";
 
 function Grid({ children }: { children: React.ReactNode }) {
   return <div className="grid grid-cols-2 gap-4">{children}</div>;
@@ -33,9 +34,8 @@ function Selection({ characters }: { characters: ICharacter[] }) {
         }`}
       >
         {characters.map((character) => {
-          const { cid, cash, bank, firstname, lastname, sex, dob, phone } =
+          const { cid, cash, bank, firstname, lastname, sex, phone } =
             character;
-          // const { name, rank } = job;
 
           const fullname = `${firstname} ${lastname}`;
 
@@ -47,15 +47,6 @@ function Selection({ characters }: { characters: ICharacter[] }) {
               >
                 <header>
                   <h3 className="text-3xl font-semibold text-mp">{fullname}</h3>
-                  {/* <h4 className="capitalize text-lg font-medium text-white/60">
-                    {!rank ? (
-                      name
-                    ) : (
-                      <span>
-                        {name} ({rank})
-                      </span>
-                    )}
-                  </h4> */}
                 </header>
 
                 <main className="flex flex-col gap-4 text-white/60">
@@ -94,8 +85,7 @@ function Selection({ characters }: { characters: ICharacter[] }) {
           character={characterToDelete}
           onClose={() => setCharacterToDelete(null)}
           onConfirm={() => {
-            console.log("Attempting to delete character:", characterToDelete); // Ensure cid exists here
-            fetchNui("deleteCharacter", characterToDelete); // Send characterToDelete directly, no need for JSON.stringify
+            fetchNui("deleteCharacter", characterToDelete);
             setCharacterToDelete(null);
           }}
         />
