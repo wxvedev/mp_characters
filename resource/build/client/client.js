@@ -1,7 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 687:
+/***/ "./src/client/callbacks.ts":
+/*!*********************************!*\
+  !*** ./src/client/callbacks.ts ***!
+  \*********************************/
 /***/ (() => {
 
 RegisterNuiCallbackType("createCharacter");
@@ -29,13 +32,16 @@ on("__cfx_nui:deleteCharacter", (charData) => {
 
 /***/ }),
 
-/***/ 130:
+/***/ "./src/client/events.ts":
+/*!******************************!*\
+  !*** ./src/client/events.ts ***!
+  \******************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const nui_1 = __webpack_require__(995);
+const nui_1 = __webpack_require__(/*! ./nui */ "./src/client/nui.ts");
 onNet("mp_characters:setVisible", (visible) => {
     (0, nui_1.send)({ action: "setVisible", data: visible });
     (0, nui_1.focus)(visible ? true : false);
@@ -48,7 +54,10 @@ onNet("mp_characters:setCharacters", (data) => {
 
 /***/ }),
 
-/***/ 995:
+/***/ "./src/client/nui.ts":
+/*!***************************!*\
+  !*** ./src/client/nui.ts ***!
+  \***************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -103,12 +112,14 @@ var __webpack_exports__ = {};
 (() => {
 "use strict";
 var exports = __webpack_exports__;
-var __webpack_unused_export__;
+/*!******************************!*\
+  !*** ./src/client/client.ts ***!
+  \******************************/
 
-__webpack_unused_export__ = ({ value: true });
-__webpack_require__(130);
-__webpack_require__(687);
-__webpack_require__(995);
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__webpack_require__(/*! ./events */ "./src/client/events.ts");
+__webpack_require__(/*! ./callbacks */ "./src/client/callbacks.ts");
+__webpack_require__(/*! ./nui.ts */ "./src/client/nui.ts");
 
 })();
 
