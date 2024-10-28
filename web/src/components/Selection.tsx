@@ -32,10 +32,6 @@ function Selection({ characters }: { characters: ICharacter[] }) {
     console.log("Spawning", character);
   };
 
-  useEffect(() => {
-    if (selectedCharacter) spawnCharacter(selectedCharacter);
-  }, [selectedCharacter]);
-
   return (
     <main>
       <ul
@@ -44,16 +40,8 @@ function Selection({ characters }: { characters: ICharacter[] }) {
         }`}
       >
         {characters.map((character) => {
-          const {
-            cid,
-            cash,
-            bank,
-            firstname,
-            lastname,
-            sex,
-            dob,
-            phone,
-          } = character;
+          const { cid, cash, bank, firstname, lastname, sex, dob, phone } =
+            character;
           // const { name, rank } = job;
 
           const fullname = `${firstname} ${lastname}`;
@@ -93,7 +81,7 @@ function Selection({ characters }: { characters: ICharacter[] }) {
                     className="bg-blue-500 hover:bg-blue-600"
                     text="Select"
                     disabled={false}
-                    onClick={() => setSelectedCharacter(character)}
+                    onClick={() => fetchNui("selectCharacter", character)}
                   />
                   <Button
                     className="bg-red-500 hover:bg-red-600"
@@ -113,8 +101,7 @@ function Selection({ characters }: { characters: ICharacter[] }) {
           character={characterToDelete}
           onClose={() => setCharacterToDelete(null)}
           onConfirm={() => {
-            console.log("Deleted", characterToDelete);
-            fetchNui("deleteCharacter", characterToDelete.cid);
+            fetchNui("deleteCharacter", characterToDelete);
             setCharacterToDelete(null);
           }}
         />

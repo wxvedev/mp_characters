@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./Button";
+import { fetchNui } from "../hooks/fetchNui";
 
 function Input({
   type,
@@ -29,7 +30,11 @@ function Input({
             Select {label}
           </option>
           {options?.map((option) => (
-            <option key={option.value} value={option.value} className="bg-[#090a0d]">
+            <option
+              key={option.value}
+              value={option.value}
+              className="bg-[#090a0d]"
+            >
               {option.label}
             </option>
           ))}
@@ -354,7 +359,7 @@ function Creation() {
         text="Create"
         type="submit"
         disabled={disabled}
-        onClick={() => console.log(data)}
+        onClick={() => fetchNui("createCharacter", data)}
       />
     </main>
   );
