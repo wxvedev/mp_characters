@@ -1,13 +1,24 @@
-import ICharacter from "types/character";
 import { focus, send } from "./nui";
+
+type ICharacter = {
+  cid: string;
+  cash: number;
+  bank: number;
+  firstname: string;
+  lastname: string;
+  sex: "male" | "female";
+  dob: string;
+  phone: string;
+  bankingId: string;
+  citizenid: string;
+};
 
 onNet("mp_characters:setVisible", (visible: boolean) => {
   send({ action: "setVisible", data: visible });
   focus(visible ? true : false);
-  console.log("VISIBLE: ", visible);
 });
 
 onNet("mp_characters:setCharacters", (data: ICharacter[]) => {
   send({ action: "setCharacters", data: data });
-  console.log("ACTUAL PLAYER DATA RECEIVED!!!", JSON.stringify(data));
+  console.log("setCharacters", data);
 });

@@ -1,29 +1,32 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/client/callbacks.ts":
 /*!*********************************!*\
   !*** ./src/client/callbacks.ts ***!
   \*********************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (() => {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
 RegisterNuiCallbackType("createCharacter");
 on("__cfx_nui:createCharacter", (charData) => {
-    console.log("NUI CALLBACK createCharacter: Passed.");
     emitNet("MP-Base:server:createCharacter", charData);
+    console.log("__cfx_nui:createCharacter", charData);
 });
 RegisterNuiCallbackType("selectCharacter");
 on("__cfx_nui:selectCharacter", (data, cb) => {
     emitNet("MP-Base:Char:ServerSelect", data.cid);
     cb({ success: true });
+    console.log("__cfx_nui:selectCharacter", data);
 });
 RegisterNuiCallbackType("deleteCharacter");
-on("__cfx_nui:deleteCharacter", ({ charData }, cb) => {
-    emitNet("MP-Base:deleteChar", JSON.parse(JSON.stringify(charData)));
-    cb({ success: true });
+on("__cfx_nui:deleteCharacter", (charData) => {
+    try {
+        console.log("Emitting deleteChar event with data:", charData); // Debug
+        emitNet("MP-Base:deleteChar", JSON.stringify(charData)); // Ensure charData is structured correctly
+    }
+    catch (err) {
+        console.error("Error in deleteCharacter:", err);
+    }
 });
 
 
@@ -35,17 +38,17 @@ on("__cfx_nui:deleteCharacter", ({ charData }, cb) => {
   \******************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const nui_1 = __webpack_require__(/*! ./nui */ "./src/client/nui.ts");
 onNet("mp_characters:setVisible", (visible) => {
     (0, nui_1.send)({ action: "setVisible", data: visible });
     (0, nui_1.focus)(visible ? true : false);
-    console.log("VISIBLE: ", visible);
 });
 onNet("mp_characters:setCharacters", (data) => {
     (0, nui_1.send)({ action: "setCharacters", data: data });
-    console.log("ACTUAL PLAYER DATA RECEIVED!!!", JSON.stringify(data));
+    console.log("setCharacters", data);
 });
 
 
@@ -57,6 +60,7 @@ onNet("mp_characters:setCharacters", (data) => {
   \***************************/
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.focus = exports.send = void 0;
@@ -104,8 +108,9 @@ exports.focus = focus;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 var exports = __webpack_exports__;
 /*!******************************!*\
   !*** ./src/client/client.ts ***!

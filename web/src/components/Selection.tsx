@@ -21,16 +21,9 @@ function Info({ title, description }: { title: string; description: string }) {
 }
 
 function Selection({ characters }: { characters: ICharacter[] }) {
-  const [selectedCharacter, setSelectedCharacter] = useState<ICharacter | null>(
-    null
-  );
   const [characterToDelete, setCharacterToDelete] = useState<ICharacter | null>(
     null
   );
-
-  const spawnCharacter = (character: ICharacter) => {
-    console.log("Spawning", character);
-  };
 
   return (
     <main>
@@ -67,7 +60,7 @@ function Selection({ characters }: { characters: ICharacter[] }) {
 
                 <main className="flex flex-col gap-4 text-white/60">
                   <Grid>
-                    <Info title="Gender" description={sex} />
+                    <Info title="Sex" description={sex} />
                     <Info title="Phone Number" description={phone} />
                   </Grid>
                   <Grid>
@@ -101,7 +94,8 @@ function Selection({ characters }: { characters: ICharacter[] }) {
           character={characterToDelete}
           onClose={() => setCharacterToDelete(null)}
           onConfirm={() => {
-            fetchNui("deleteCharacter", characterToDelete);
+            console.log("Attempting to delete character:", characterToDelete); // Ensure cid exists here
+            fetchNui("deleteCharacter", characterToDelete); // Send characterToDelete directly, no need for JSON.stringify
             setCharacterToDelete(null);
           }}
         />

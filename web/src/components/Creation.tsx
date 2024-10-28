@@ -55,13 +55,13 @@ function Creation() {
   const [data, setData] = useState<any>({
     firstName: "",
     lastName: "",
-    gender: "",
+    sex: "",
     country: "",
   });
 
-  const { firstName, lastName, gender, country } = data;
+  const { firstName, lastName, sex, country } = data;
 
-  const disabled = !firstName || !lastName || !gender || !country;
+  const disabled = !firstName || !lastName || !sex || !country;
 
   const countries = [
     { value: "AF", label: "Afghanistan" },
@@ -311,7 +311,7 @@ function Creation() {
     { value: "ZW", label: "Zimbabwe" },
   ];
 
-  const genderOptions = [
+  const sexOptions = [
     { value: "male", label: "Male" },
     { value: "female", label: "Female" },
   ];
@@ -336,10 +336,10 @@ function Creation() {
         <div className="grid grid-cols-2 gap-4">
           <Input
             type="select"
-            label="Gender"
-            value={data.gender}
-            onChange={(e) => setData({ ...data, gender: e.target.value })}
-            options={genderOptions}
+            label="Sex"
+            value={data.sex}
+            onChange={(e) => setData({ ...data, sex: e.target.value })}
+            options={sexOptions}
           />
           <Input
             type="select"
